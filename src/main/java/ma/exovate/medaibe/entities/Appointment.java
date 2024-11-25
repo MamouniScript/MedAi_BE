@@ -30,6 +30,8 @@ public class Appointment {
     @JoinColumn(name = "patientId", nullable = false)
     private Patient patient;
 
+    private Double duration;
+
     private LocalDateTime date;
     private LocalDateTime time;
     private String status;

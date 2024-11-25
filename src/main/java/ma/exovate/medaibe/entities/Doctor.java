@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -19,8 +20,20 @@ public class Doctor {
 
     private String firstName;
     private String lastName;
+    private String gender;
+
+    private String phone_Number;
+
+    private String nni;
+    private Date birthdate;
+    private String birth_Place;
+
     private String email;
     private String password;
+
+    private String pitch;
+
+    private Date graduation_year;
 
     private Boolean verification;
     private String documents;

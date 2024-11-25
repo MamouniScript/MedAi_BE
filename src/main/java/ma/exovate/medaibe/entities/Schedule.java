@@ -21,7 +21,7 @@ public class Schedule {
     private Long scheduleId;
 
     private String day;
-    private String timeSlot;
+    private String timeSlots;
 
     @Override
     public final boolean equals(Object o) {
