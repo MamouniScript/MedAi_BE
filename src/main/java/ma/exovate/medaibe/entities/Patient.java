@@ -6,11 +6,12 @@ import org.hibernate.proxy.HibernateProxy;
 
 import java.util.Objects;
 
+
 @Entity
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Patient {
 
     @Id
@@ -26,19 +27,5 @@ public class Patient {
     @JoinColumn(name = "cityId", nullable = false)
     private City city;
 
-    @Override
-    public final boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null) return false;
-        Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
-        Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
-        if (thisEffectiveClass != oEffectiveClass) return false;
-        Patient patient = (Patient) o;
-        return getPatientId() != null && Objects.equals(getPatientId(), patient.getPatientId());
-    }
 
-    @Override
-    public final int hashCode() {
-        return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
-    }
 }
