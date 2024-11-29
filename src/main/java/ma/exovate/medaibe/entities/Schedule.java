@@ -7,6 +7,8 @@ import jakarta.persistence.Id;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Entity
