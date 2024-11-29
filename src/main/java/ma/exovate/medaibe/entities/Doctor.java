@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Doctor {
 
     @Id
@@ -24,7 +24,7 @@ public class Doctor {
 
     private String phone_Number;
 
-    private String nni;
+    private String cin;
     private Date birthdate;
     private String birth_Place;
 
@@ -57,20 +57,6 @@ public class Doctor {
     private Integer totalReviews = 0;
     private Integer appointmentCount = 0;
 
-    @Override
-    public final boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null) return false;
-        Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
-        Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
-        if (thisEffectiveClass != oEffectiveClass) return false;
-        Doctor doctor = (Doctor) o;
-        return getDoctorId() != null && Objects.equals(getDoctorId(), doctor.getDoctorId());
-    }
 
-    @Override
-    public final int hashCode() {
-        return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
-    }
 }
 
