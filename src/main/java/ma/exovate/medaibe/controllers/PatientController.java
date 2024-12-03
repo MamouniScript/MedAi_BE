@@ -1,8 +1,8 @@
 package ma.exovate.medaibe.controllers;
 
 
-import ma.exovate.medaibe.dtos.Patient.PatientDTO;
-import ma.exovate.medaibe.dtos.Patient.PatientReq;
+import ma.exovate.medaibe.dtos.PatientDTO;
+import ma.exovate.medaibe.dtos.PatientReq;
 import ma.exovate.medaibe.entities.City;
 import ma.exovate.medaibe.entities.Patient;
 import ma.exovate.medaibe.mappers.PatientMapper;

@@ -1,0 +1,43 @@
+version: '3.9'
+
+# *************
+services:
+
+  #                 *************
+  mysql_service:
+    container_name: mysql-container
+    image: mysql:latest
+    restart: unless-stopped
+    volumes:
+      - "./db-data:/var/lib/mysql"
+    ports:
+      - '3307:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=med-ai-db
+    networks:
+      medainet:
+        ipv4_address: 192.168.70.7
+
+  #         *************
+  php_myadmin_service:
+    container_name: php-my-admin-container
+    image: phpmyadmin:latest
+    restart: no
+    ports:
+      - '7080:80'
+    environment:
+      - PMA_HOST=mysql-container
+      - MYSQL_ROOT_PASSWORD=123456
+    networks:
+      medainet:
+        ipv4_address: 192.168.70.9
+
+# *************
+networks:
+  medainet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.70.0/24
+          gateway: 192.168.70.1

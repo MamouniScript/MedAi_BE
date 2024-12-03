@@ -1,7 +1,7 @@
 package ma.exovate.medaibe.mappers;
 
-import ma.exovate.medaibe.dtos.Doctor.DoctorDTO;
-import ma.exovate.medaibe.dtos.Doctor.DoctorReq;
+import ma.exovate.medaibe.dtos.DoctorDTO;
+import ma.exovate.medaibe.dtos.DoctorReq;
 import ma.exovate.medaibe.entities.City;
 import ma.exovate.medaibe.entities.Doctor;
 import ma.exovate.medaibe.entities.Speciality;

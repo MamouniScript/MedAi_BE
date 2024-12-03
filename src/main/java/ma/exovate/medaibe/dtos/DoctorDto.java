@@ -1,36 +1,29 @@
 package ma.exovate.medaibe.dtos;
 
-import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class DoctorDto {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class DoctorDTO {
 
     private Long doctorId;
     private String firstName;
     private String lastName;
     private String gender;
     private String phoneNumber;
-    private String nni;
-    private Date birthdate;
-    private String birthPlace;
     private String email;
     private String pitch;
-    private Date graduationYear;
-    private Boolean verification;
-    private String documents;
     private Double balance;
     private Double commission;
-
-    private Long specializationId;
-    private String specializationName;
-
-    private Long scheduleId;
-
-    private Long cityId;
-    private String cityName;
-
+    private String specializationName; // Nom de la spécialité pour la présentation.
+    private String cityName;          // Nom de la ville pour la présentation.
     private Double averageRating;
     private Integer totalReviews;
     private Integer appointmentCount;
 
-    // Getters and setters
 }
