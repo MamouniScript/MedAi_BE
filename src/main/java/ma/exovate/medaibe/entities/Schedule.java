@@ -1,15 +1,11 @@
 package ma.exovate.medaibe.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.proxy.HibernateProxy;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 @Entity
 @Getter
@@ -22,23 +18,16 @@ public class Schedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long scheduleId;
 
-    private String day;
-    private String timeSlots;
+    @ManyToOne
+    @JoinColumn(name = "doctorId", nullable = false)
+    private Doctor doctor;
 
-    @Override
-    public final boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null) return false;
-        Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
-        Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
-        if (thisEffectiveClass != oEffectiveClass) return false;
-        Schedule schedule = (Schedule) o;
-        return getScheduleId() != null && Objects.equals(getScheduleId(), schedule.getScheduleId());
-    }
+    private LocalDate date; // Date of availability
+    private LocalTime startTime; // Start time of availability
+    private LocalTime endTime; // End time of availability
+    private Integer sessionDuration; // Duration in minutes
+    private Integer breakDuration; // Break between sessions in minutes
 
-    @Override
-    public final int hashCode() {
-        return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
-    }
+    @OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Timeslot> timeSlots;
 }
-
