@@ -26,6 +26,9 @@ public class Report {
     @Column(columnDefinition = "TEXT")
     private String recommendations;
 
+    @Column(columnDefinition = "TEXT")
+    private String link;
+
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;

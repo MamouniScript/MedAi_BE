@@ -28,4 +28,6 @@ public class ReportDto {
 
     private String diagnosis;
     private String recommendations;
+
+    private String link;
 }
