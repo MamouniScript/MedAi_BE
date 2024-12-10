@@ -5,7 +5,7 @@ Dockerfile
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-db-data
+db-data/
 
 ### STS ###
 .apt_generated
