@@ -15,9 +15,9 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=med-ai-db
-    networks:
-      medainet:
-        ipv4_address: 192.168.70.7
+#    networks:
+#      medainet:
+#        ipv4_address: 192.168.70.7
 
   #         *************
   php_myadmin_service:
@@ -29,15 +29,37 @@ services:
     environment:
       - PMA_HOST=mysql-container
       - MYSQL_ROOT_PASSWORD=123456
-    networks:
-      medainet:
-        ipv4_address: 192.168.70.9
+#    networks:
+#      medainet:
+#        ipv4_address: 192.168.70.9
 
-# *************
-networks:
-  medainet:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.70.0/24
-          gateway: 192.168.70.1
+    #         *************
+
+  medai_be:
+    container_name: medai-container
+    depends_on:
+      - mysql_service
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - '8084:8080'
+    restart: no
+    environment:
+      - spring.jpa.hibernate.ddl-auto= update
+      - spring.datasource.driver-classname=com.mysql.cj.jdbc.Driver
+      - spring.datasource.url=jdbc:mysql://mysql-container:3306/med-ai-db
+      - spring.datasource.username=root
+      - spring.datasource.password=123456
+
+
+
+
+    # *************
+#networks:
+#  medainet:
+#    driver: bridge
+#    ipam:
+#      config:
+#        - subnet: 192.168.70.0/24
+#          gateway: 192.168.70.1
